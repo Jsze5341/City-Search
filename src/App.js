@@ -29,10 +29,8 @@ class City extends React.Component {
       array: [],
     };
 
-    //handleZip's improperly named but changing names
-    //seems to break the program
-    this.handleZipChange = this.handleZipChange.bind(this);
-    this.handleZipSubmit = this.handleZipSubmit.bind(this);
+    this.handleCityChange = this.handleCityChange.bind(this);
+    this.handleCitySubmit = this.handleCitySubmit.bind(this);
   }
 
   returnData()
@@ -54,7 +52,7 @@ class City extends React.Component {
 
   }
 
-  handleZipChange(zip){
+  handleCityChange(zip){
     this.setState({
       city: zip.target.value.toUpperCase(),
     });
@@ -62,7 +60,7 @@ class City extends React.Component {
     console.log(this.state.array);
   }
 
-  handleZipSubmit(zip){
+  handleCitySubmit(zip){
     zip.preventDefault();
     fetch("http://ctp-zip-api.herokuapp.com/city/" + this.state.city)
     .then((response) => response.json())
@@ -86,10 +84,10 @@ class City extends React.Component {
   render(){
     return(
       <div>
-      <form onSubmit={this.handleZipSubmit}>
+      <form onSubmit={this.handleCitySubmit}>
         <label>
-          Enter Zip:
-          <textarea value={this.state.value} onChange={this.handleZipChange} />        
+          Enter City:
+          <textarea value={this.state.value} onChange={this.handleCityChange} />        
         </label>
         <input type="submit" value="Submit" />
         </form>
